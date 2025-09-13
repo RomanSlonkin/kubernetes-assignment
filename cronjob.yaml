@@ -1,0 +1,23 @@
+# CronJob file that prints the current date and time every minute to a log file
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: date-logger
+spec:
+  schedule: "*/1 * * * *" 
+  jobTemplate:
+    spec:
+      template:
+      spec:
+        containers:
+          - name: date-logger
+            image: busybox:latest
+            command: ["/bin/sh", "-c", "date >> /mnt/logs/date.log"]
+            volumeMounts:
+              - name: log-volume
+                mountPath: /mnt/logs
+        restartPolicy: OnFailure
+        volumes:
+          - name: log-volume
+            persistentVolumeClaim:
+              claimName: nginx-pvc

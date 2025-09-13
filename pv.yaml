@@ -1,0 +1,24 @@
+# Kubernetes Assignment 
+# Task 1
+
+# Persistent Volume Configuration File
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: nginx-pv
+  labels:
+    type: local
+spec:
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: ./mnt/data
+
+
+
+
+
+
