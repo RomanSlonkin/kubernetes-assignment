@@ -1,4 +1,4 @@
-# Liveness Probe
+# This YAML file defines a Kubernetes Deployment with a liveness probe for an Nginx container.
 apiVersion: apps/v1
 kind: Deployment
 metadata:
